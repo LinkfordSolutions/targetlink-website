@@ -47,6 +47,27 @@ npm run build
 
 The production build will be in the `dist` folder.
 
+## Deployment
+
+**Production Server:** `45.91.237.114`
+**Domain:** `targetlink.net`
+
+### Quick Deployment
+
+```bash
+# First time
+npm install
+./scripts/deploy.sh
+
+# Updates from GitHub
+./scripts/update.sh
+
+# Check status
+./scripts/status.sh
+```
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
+
 ## Project Structure
 
 ```
