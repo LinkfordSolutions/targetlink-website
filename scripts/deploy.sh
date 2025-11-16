@@ -1,16 +1,11 @@
 #!/bin/bash
 
 # TargetLink Website Deployment Script
-# This script builds and deploys the website using Docker
+# This script builds and deploys the website using Nginx
 
 set -e
 
 echo "🚀 Starting TargetLink website deployment..."
-
-# Check if we're on the server
-if [ -f "/.dockerenv" ] || [ -f "/run/.containerenv" ]; then
-    echo "⚠️  Warning: Running inside a container"
-fi
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -29,34 +24,52 @@ fi
 
 echo -e "${GREEN}✅ Build completed successfully${NC}"
 
-# Check if Docker is available
-if ! command -v docker &> /dev/null; then
-    echo -e "${RED}❌ Docker is not installed${NC}"
+# Deploy to web directory
+echo -e "${YELLOW}📂 Deploying files to /var/www/targetlink.net...${NC}"
+mkdir -p /var/www/targetlink.net
+cp -r dist/* /var/www/targetlink.net/
+
+if [ $? -eq 0 ]; then
+    echo -e "${GREEN}✅ Files deployed successfully${NC}"
+else
+    echo -e "${RED}❌ File deployment failed!${NC}"
     exit 1
 fi
 
-# Stop existing container if running
-echo -e "${YELLOW}🛑 Stopping existing container...${NC}"
-docker-compose down 2>/dev/null || true
+# Check if Nginx config exists
+if [ ! -f "/etc/nginx/sites-enabled/targetlink.net" ]; then
+    echo -e "${YELLOW}⚙️  Nginx config not found, creating it...${NC}"
+    ln -sf /etc/nginx/sites-available/targetlink.net /etc/nginx/sites-enabled/targetlink.net
+fi
 
-# Build and start new container
-echo -e "${YELLOW}🏗️  Building Docker image...${NC}"
-docker-compose build
+# Test Nginx configuration
+echo -e "${YELLOW}🔍 Testing Nginx configuration...${NC}"
+nginx -t
 
-echo -e "${YELLOW}🚀 Starting container...${NC}"
-docker-compose up -d
+if [ $? -ne 0 ]; then
+    echo -e "${RED}❌ Nginx configuration test failed!${NC}"
+    exit 1
+fi
+
+# Reload Nginx
+echo -e "${YELLOW}🔄 Reloading Nginx...${NC}"
+systemctl reload nginx
 
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✅ Deployment successful!${NC}"
     echo -e "${GREEN}🌐 Website is now running at http://45.91.237.114${NC}"
     echo -e "${GREEN}🌐 Domain: http://targetlink.net${NC}"
 else
-    echo -e "${RED}❌ Deployment failed!${NC}"
+    echo -e "${RED}❌ Nginx reload failed!${NC}"
     exit 1
 fi
 
-# Show container status
-echo -e "\n${YELLOW}📊 Container status:${NC}"
-docker-compose ps
+# Check if website is accessible
+echo -e "\n${YELLOW}🔍 Checking website accessibility...${NC}"
+if curl -s -o /dev/null -w "%{http_code}" http://localhost | grep -q "200"; then
+    echo -e "${GREEN}✅ Website is accessible${NC}"
+else
+    echo -e "${RED}❌ Website is not accessible${NC}"
+fi
 
 echo -e "\n${GREEN}✨ Deployment complete!${NC}"
