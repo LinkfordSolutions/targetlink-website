@@ -6,6 +6,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      perspective: {
+        '1000': '1000px',
+        '1500': '1500px',
+        '2000': '2000px',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

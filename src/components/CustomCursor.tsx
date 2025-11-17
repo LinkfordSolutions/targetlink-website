@@ -1,13 +1,23 @@
-import { motion } from "framer-motion";
-import { useMousePosition } from "@/hooks/useMousePosition";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export const CustomCursor = () => {
-  const { x, y } = useMousePosition();
   const [isPointer, setIsPointer] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
+
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+
+  const springConfig = { damping: 25, stiffness: 700 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX - 8);
+      cursorY.set(e.clientY - 8);
+    };
+
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const isClickable =
@@ -20,19 +30,21 @@ export const CustomCursor = () => {
       setIsPointer(!!isClickable);
     };
 
-    const handleMouseLeave = () => setIsHidden(true);
     const handleMouseEnter = () => setIsHidden(false);
+    const handleMouseLeave = () => setIsHidden(true);
 
+    window.addEventListener("mousemove", moveCursor);
     document.addEventListener("mouseover", handleMouseOver);
-    document.addEventListener("mouseleave", handleMouseLeave);
     document.addEventListener("mouseenter", handleMouseEnter);
+    document.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
+      window.removeEventListener("mousemove", moveCursor);
       document.removeEventListener("mouseover", handleMouseOver);
-      document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
+      document.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, []);
+  }, [cursorX, cursorY]);
 
   if (isHidden) return null;
 
@@ -40,30 +52,30 @@ export const CustomCursor = () => {
     <>
       <motion.div
         className="fixed w-4 h-4 bg-brand-primary rounded-full pointer-events-none z-[10000] mix-blend-difference"
+        style={{
+          left: cursorXSpring,
+          top: cursorYSpring,
+        }}
         animate={{
-          x: x - 8,
-          y: y - 8,
           scale: isPointer ? 1.5 : 1,
         }}
         transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 28,
-          mass: 0.5,
+          scale: { duration: 0.2 },
         }}
       />
       <motion.div
         className="fixed w-10 h-10 border-2 border-brand-primary/50 rounded-full pointer-events-none z-[10000] mix-blend-difference"
+        style={{
+          left: cursorXSpring,
+          top: cursorYSpring,
+          x: -12,
+          y: -12,
+        }}
         animate={{
-          x: x - 20,
-          y: y - 20,
           scale: isPointer ? 1.8 : 1,
         }}
         transition={{
-          type: "spring",
-          stiffness: 150,
-          damping: 15,
-          mass: 0.1,
+          scale: { duration: 0.3 },
         }}
       />
     </>

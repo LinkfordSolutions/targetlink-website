@@ -45,17 +45,25 @@ export const HeroContent = () => {
           </motion.div>
           
           <MagneticTitle className="text-white text-5xl font-bold box-border caret-transparent leading-tight font-sora md:text-7xl">
-            <TextReveal delay={0.2}>
-              Создавайте{" "}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-secondary to-brand-success animate-gradient-shift">
-                быстрее
-              </span>
-              {" "}и работайте{" "}
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <TextReveal delay={0.2}>Создавайте</TextReveal>{" "}
+              <TextReveal delay={0.4}>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-secondary to-brand-success animate-gradient-shift">
+                  быстрее
+                </span>
+              </TextReveal>{" "}
+              <TextReveal delay={0.6}>и работайте</TextReveal>{" "}
               <motion.span
                 className="relative inline-block"
                 style={{ display: "inline-block" }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
                 whileHover={{ scale: 1.05, rotate: -1 }}
-                transition={{ duration: 0.3 }}
               >
                 <motion.span
                   className="relative inline-block px-6 py-2 bg-gradient-to-r from-brand-purple via-brand-accent to-brand-accent rounded-xl"
@@ -106,7 +114,7 @@ export const HeroContent = () => {
                   ✨
                 </motion.span>
               </motion.span>
-            </TextReveal>
+            </motion.h1>
           </MagneticTitle>
           <motion.p 
             className="text-white/90 text-lg box-border caret-transparent leading-relaxed max-w-xl mt-6 md:text-xl"

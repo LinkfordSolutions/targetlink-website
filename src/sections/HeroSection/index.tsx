@@ -1,5 +1,6 @@
 import { HeroContent } from "@/sections/HeroSection/components/HeroContent";
 import { ParticleBackground } from "@/components/ParticleBackground";
+import { MorphingSVG } from "@/components/MorphingSVG";
 import { motion } from "framer-motion";
 
 export const HeroSection = () => {
@@ -8,6 +9,14 @@ export const HeroSection = () => {
       <div className="absolute bg-gradient-mesh bg-[length:200%_200%] animate-gradient-shift box-border caret-transparent z-0 inset-0"></div>
 
       <ParticleBackground />
+
+      <div className="absolute top-10 right-10 w-64 h-64 opacity-20 pointer-events-none">
+        <MorphingSVG />
+      </div>
+
+      <div className="absolute bottom-20 left-10 w-48 h-48 opacity-15 pointer-events-none">
+        <MorphingSVG />
+      </div>
 
       <motion.div
         className="absolute bg-brand-primary/20 box-border caret-transparent blur-3xl h-80 w-80 rounded-full"
