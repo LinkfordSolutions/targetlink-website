@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { HoverGlowCard } from "@/components/HoverGlowCard";
-import { Tilt3DCard } from "@/components/Tilt3DCard";
+import { Enhanced3DCard } from "@/components/Enhanced3DCard";
 
 export const SolutionCards = () => {
   const cardVariants = {
@@ -76,11 +75,10 @@ export const SolutionCards = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={cardVariants}
         >
-          <Tilt3DCard intensity={10}>
-            <HoverGlowCard
-              className="relative text-slate-900 bg-white shadow-[0_4px_20px_rgba(0,102,255,0.08)] box-border caret-transparent h-full border border-gray-100 overflow-visible rounded-xl hover:shadow-[0_12px_40px_rgba(0,102,255,0.2)] hover:border-brand-primary/50 transition-all duration-500 group backdrop-blur-sm"
-              glowColor={card.glowColor}
-            >
+          <Enhanced3DCard
+            className="relative text-slate-900 bg-white shadow-[0_4px_20px_rgba(0,102,255,0.08)] box-border caret-transparent h-full border border-gray-100 overflow-visible rounded-xl hover:shadow-[0_12px_40px_rgba(0,102,255,0.2)] hover:border-brand-primary/50 transition-all duration-500 group backdrop-blur-sm"
+            glowColor={card.glowColor}
+          >
               <div className="relative z-10 h-full flex flex-col p-6">
                 <motion.div
                   className="text-white items-center bg-gradient-brand shadow-[0_8px_24px_rgba(0,102,255,0.25)] box-border caret-transparent flex h-16 justify-center w-16 mb-4 rounded-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500"
@@ -138,8 +136,7 @@ export const SolutionCards = () => {
                   </ul>
                 </div>
               </div>
-            </HoverGlowCard>
-          </Tilt3DCard>
+          </Enhanced3DCard>
         </motion.div>
       ))}
     </div>

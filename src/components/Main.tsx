@@ -5,17 +5,30 @@ import { CaseStudiesSection } from "@/sections/CaseStudiesSection";
 import { TestimonialsSection } from "@/sections/TestimonialsSection";
 import { ContactSection } from "@/sections/ContactSection";
 import { CTASection } from "@/sections/CTASection";
+import { SectionTransition } from "@/components/SectionTransition";
 
 export const Main = () => {
   return (
     <main className="box-border caret-transparent">
       <HeroSection />
-      <SolutionsSection />
-      <IndustriesSection />
-      <CaseStudiesSection />
-      <TestimonialsSection />
-      <ContactSection />
-      <CTASection />
+      <SectionTransition>
+        <SolutionsSection />
+      </SectionTransition>
+      <SectionTransition>
+        <IndustriesSection />
+      </SectionTransition>
+      <SectionTransition>
+        <CaseStudiesSection />
+      </SectionTransition>
+      <SectionTransition>
+        <TestimonialsSection />
+      </SectionTransition>
+      <SectionTransition>
+        <ContactSection />
+      </SectionTransition>
+      <SectionTransition>
+        <CTASection />
+      </SectionTransition>
     </main>
   );
 };
