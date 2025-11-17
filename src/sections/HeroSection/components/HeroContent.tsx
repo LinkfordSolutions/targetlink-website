@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { LottieAnimation } from "./LottieAnimation";
+import { MagneticTitle } from "@/components/MagneticTitle";
+import { TextReveal } from "@/components/TextReveal";
 
 export const HeroContent = () => {
   return (
@@ -42,73 +44,70 @@ export const HeroContent = () => {
             <span className="text-white/80 text-lg font-semibold">TargetLink</span>
           </motion.div>
           
-          <motion.h1 
-            className="text-white text-5xl font-bold box-border caret-transparent leading-tight font-sora md:text-7xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Создавайте{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-secondary to-brand-success animate-gradient-shift">
-              быстрее
-            </span>
-            {" "}и работайте{" "}
-            <motion.span 
-              className="relative inline-block"
-              style={{ display: "inline-block" }}
-              whileHover={{ scale: 1.05, rotate: -1 }}
-              transition={{ duration: 0.3 }}
-            >
+          <MagneticTitle className="text-white text-5xl font-bold box-border caret-transparent leading-tight font-sora md:text-7xl">
+            <TextReveal delay={0.2}>
+              Создавайте{" "}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-secondary to-brand-success animate-gradient-shift">
+                быстрее
+              </span>
+              {" "}и работайте{" "}
               <motion.span
-                className="relative inline-block px-6 py-2 bg-gradient-to-r from-brand-purple via-brand-accent to-brand-accent rounded-xl"
-                style={{ 
-                  transform: "rotate(-2deg)",
-                  boxShadow: "0 10px 40px rgba(255, 61, 113, 0.4)"
-                }}
-                animate={{
-                  boxShadow: [
-                    "0 10px 40px rgba(255, 61, 113, 0.4)",
-                    "0 10px 50px rgba(123, 97, 255, 0.5)",
-                    "0 10px 40px rgba(255, 61, 113, 0.4)"
-                  ],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                className="relative inline-block"
+                style={{ display: "inline-block" }}
+                whileHover={{ scale: 1.05, rotate: -1 }}
+                transition={{ duration: 0.3 }}
               >
-                <span className="relative z-10 text-white font-bold">
-                  умнее
-                </span>
                 <motion.span
-                  className="absolute inset-0 bg-gradient-to-r from-brand-accent/50 via-brand-purple/50 to-brand-primary/50 rounded-xl opacity-0"
+                  className="relative inline-block px-6 py-2 bg-gradient-to-r from-brand-purple via-brand-accent to-brand-accent rounded-xl"
+                  style={{
+                    transform: "rotate(-2deg)",
+                    boxShadow: "0 10px 40px rgba(255, 61, 113, 0.4)"
+                  }}
                   animate={{
-                    opacity: [0, 0.3, 0],
+                    boxShadow: [
+                      "0 10px 40px rgba(255, 61, 113, 0.4)",
+                      "0 10px 50px rgba(123, 97, 255, 0.5)",
+                      "0 10px 40px rgba(255, 61, 113, 0.4)"
+                    ],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
-                />
+                >
+                  <span className="relative z-10 text-white font-bold">
+                    умнее
+                  </span>
+                  <motion.span
+                    className="absolute inset-0 bg-gradient-to-r from-brand-accent/50 via-brand-purple/50 to-brand-primary/50 rounded-xl opacity-0"
+                    animate={{
+                      opacity: [0, 0.3, 0],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </motion.span>
+                <motion.span
+                  className="absolute -top-2 -right-2 text-2xl md:text-3xl"
+                  animate={{
+                    rotate: [0, 15, -15, 0],
+                    y: [0, -3, 0],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  ✨
+                </motion.span>
               </motion.span>
-              <motion.span
-                className="absolute -top-2 -right-2 text-2xl md:text-3xl"
-                animate={{
-                  rotate: [0, 15, -15, 0],
-                  y: [0, -3, 0],
-                }}
-                transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                ✨
-              </motion.span>
-            </motion.span>
-          </motion.h1>
+            </TextReveal>
+          </MagneticTitle>
           <motion.p 
             className="text-white/90 text-lg box-border caret-transparent leading-relaxed max-w-xl mt-6 md:text-xl"
             initial={{ opacity: 0, y: 20 }}

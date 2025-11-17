@@ -1,4 +1,5 @@
 import { CompanyLogos } from "@/sections/CaseStudiesSection/components/CompanyLogos";
+import { StatsCounter } from "@/components/StatsCounter";
 import { motion } from "framer-motion";
 
 export const CaseStudiesSection = () => {
@@ -27,7 +28,18 @@ export const CaseStudiesSection = () => {
       </div>
       
       <CompanyLogos />
-      
+
+      <div className="max-w-screen-xl mx-auto px-6 md:px-8 mt-16">
+        <StatsCounter
+          stats={[
+            { value: 150, suffix: "+", label: "Проектов реализовано" },
+            { value: 95, suffix: "%", label: "Клиентов возвращаются" },
+            { value: 50, suffix: "+", label: "Компаний-партнеров" },
+            { value: 24, suffix: "/7", label: "Поддержка клиентов" },
+          ]}
+        />
+      </div>
+
       <motion.div 
         className="text-center mt-12 px-6 md:px-8"
         initial={{ opacity: 0, y: 20 }}
