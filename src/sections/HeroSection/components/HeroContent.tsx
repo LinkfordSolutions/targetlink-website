@@ -1,20 +1,7 @@
 import { motion } from "framer-motion";
 import { LottieAnimation } from "./LottieAnimation";
-import SplitType from "split-type";
-import { useEffect, useRef } from "react";
 
 export const HeroContent = () => {
-  const titleRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    if (titleRef.current) {
-      const split = new SplitType(titleRef.current, { types: 'words, chars' });
-
-      split.chars?.forEach((char, i) => {
-        char.style.setProperty('--char-index', i.toString());
-      });
-    }
-  }, []);
 
   return (
     <div className="relative box-border caret-transparent max-w-none w-full z-20 mx-auto px-6 py-16 md:px-8 md:py-20 md:max-w-screen-xl">
@@ -57,10 +44,9 @@ export const HeroContent = () => {
           </motion.div>
 
           <motion.h1
-            ref={titleRef}
-            className="text-white text-5xl font-bold box-border caret-transparent leading-tight font-sora md:text-7xl mb-6 hero-title"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            className="text-white text-5xl font-bold box-border caret-transparent leading-tight font-sora md:text-7xl mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             Создавайте <span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-brand-secondary via-brand-success to-brand-secondary bg-[length:200%_auto] animate-gradient-shift">быстрее</span> и работайте <motion.span
