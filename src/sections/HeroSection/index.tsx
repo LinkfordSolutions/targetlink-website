@@ -1,5 +1,5 @@
-import { HeroContentNew } from "@/sections/HeroSection/components/HeroContentNew";
+import { HeroContentEnhanced } from "@/sections/HeroSection/components/HeroContentEnhanced";
 
 export const HeroSection = () => {
-  return <HeroContentNew />;
+  return <HeroContentEnhanced />;
 };
