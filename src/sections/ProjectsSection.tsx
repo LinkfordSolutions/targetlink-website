@@ -43,7 +43,7 @@ export const ProjectsSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 font-sora">
               Наши <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">работы</span>
             </h2>
             <p className="text-xl text-white/60 max-w-2xl">

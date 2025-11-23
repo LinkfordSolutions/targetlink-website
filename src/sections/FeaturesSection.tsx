@@ -57,7 +57,7 @@ export const FeaturesSection = () => {
           >
             💪 Наши преимущества
           </motion.div>
-          <h2 className="text-5xl md:text-7xl font-bold text-black mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-black mb-6 font-sora">
             Почему выбирают{" "}
             <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
               нас

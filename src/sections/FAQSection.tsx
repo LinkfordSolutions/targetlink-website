@@ -48,7 +48,7 @@ export const FAQSection = () => {
           >
             ❓ FAQ
           </motion.div>
-          <h2 className="text-5xl md:text-7xl font-bold text-black mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-black mb-6 font-sora">
             Частые{" "}
             <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
               вопросы

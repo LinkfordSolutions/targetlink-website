@@ -48,7 +48,7 @@ export const CTASectionNew = () => {
 
           {/* Main headline */}
           <motion.h2
-            className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-tight font-sora"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -85,7 +85,7 @@ export const CTASectionNew = () => {
             transition={{ delay: 0.5 }}
           >
             Первая консультация <span className="font-bold underline">бесплатно</span>.
-            Покажем, как технологии могут <span className="font-bold">удвоить ваш доход</span>.
+            Покажем, как технологии могут <span className="font-bold">ускорить рост вашего бизнеса</span>.
           </motion.p>
 
           {/* Value props */}
@@ -147,24 +147,19 @@ export const CTASectionNew = () => {
             </MagneticButton>
           </motion.div>
 
-          {/* Social proof */}
+          {/* Social proof - simplified */}
           <motion.div
-            className="flex items-center justify-center gap-3 text-white/80"
+            className="flex items-center justify-center gap-2 text-white/80"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 1.1 }}
           >
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div
-                  key={i}
-                  className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 border-2 border-white"
-                />
-              ))}
-            </div>
-            <div className="text-sm">
-              <span className="font-bold">50+ клиентов</span> уже получили результат
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.707 6.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+            </svg>
+            <div className="text-sm font-medium">
+              50+ успешных проектов запущено
             </div>
           </motion.div>
         </motion.div>

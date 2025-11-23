@@ -40,7 +40,7 @@ export const ServicesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl md:text-7xl font-bold text-black mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-black mb-6 font-sora">
             Что мы <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">делаем</span>
           </h2>
           <p className="text-xl text-black/60 max-w-2xl mx-auto">
@@ -111,13 +111,16 @@ export const ServicesSection = () => {
               ))}
             </div>
 
-            <motion.button
-              className="mt-8 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-black hover:text-white transition-all duration-300 w-full"
+            <motion.a
+              href="https://t.me/targetlink_demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-black hover:text-white transition-all duration-300 w-full block text-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Обсудить проект
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
       </div>

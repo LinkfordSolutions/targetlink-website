@@ -53,7 +53,7 @@ export const TestimonialsCarousel = () => {
           >
             ⭐ Отзывы клиентов
           </motion.div>
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 font-sora">
             Что говорят наши{" "}
             <span className="relative inline-block">
               <span className="relative z-10">клиенты</span>
@@ -107,12 +107,9 @@ export const TestimonialsCarousel = () => {
 
               {/* Author */}
               <div className="flex items-center gap-4">
-                <motion.img
-                  src={testimonials[activeIndex].avatar}
-                  alt={testimonials[activeIndex].name}
-                  className="w-16 h-16 rounded-full border-4 border-purple-500"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                />
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-2xl font-bold">
+                  {testimonials[activeIndex].name.split(' ').map(n => n[0]).join('')}
+                </div>
                 <div>
                   <div className="text-xl font-bold text-gray-900">
                     {testimonials[activeIndex].name}

@@ -56,7 +56,7 @@ export const ProcessSection = () => {
           >
             ⚙️ Как мы работаем
           </motion.div>
-          <h2 className="text-5xl md:text-7xl font-bold text-black mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-black mb-6 font-sora">
             Процесс{" "}
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               создания
@@ -147,13 +147,16 @@ export const ProcessSection = () => {
           <p className="text-xl text-gray-600 mb-6">
             Готовы начать свой проект?
           </p>
-          <motion.button
-            className="px-12 py-5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-purple-500/50 transition-all"
+          <motion.a
+            href="https://t.me/targetlink_demo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-12 py-5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-purple-500/50 transition-all"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
           >
             Обсудить проект →
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </section>

@@ -17,7 +17,7 @@ export const ContactSectionNew = () => {
             </span>
           </div>
 
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight font-sora">
             Давайте создадим
             <br />
             <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">

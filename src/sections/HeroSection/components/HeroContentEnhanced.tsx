@@ -1,40 +1,28 @@
 import { motion } from "framer-motion";
 import { MagneticButton } from "@/components/MagneticButton";
+import { WaveEffect } from "@/components/WaveEffect";
+import { FloatingElements } from "@/components/FloatingElements";
+import { AuroraEffect } from "@/components/AuroraEffect";
+import { EnergyEffect } from "@/components/EnergyEffect";
 
 export const HeroContentEnhanced = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600">
-      {/* Animated gradient orbs */}
-      <motion.div
-        className="absolute w-96 h-96 bg-cyan-400/30 rounded-full blur-3xl"
-        animate={{
-          x: [0, 100, 0],
-          y: [0, -50, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        style={{ top: "10%", left: "10%" }}
-      />
-      <motion.div
-        className="absolute w-96 h-96 bg-purple-400/30 rounded-full blur-3xl"
-        animate={{
-          x: [0, -100, 0],
-          y: [0, 100, 0],
-          scale: [1, 1.3, 1],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        style={{ bottom: "10%", right: "10%" }}
-      />
-
       {/* Grid overlay */}
       <div
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
                            linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)`,
           backgroundSize: '50px 50px',
         }}
       />
+
+      {/* Background Effects - behind content */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <WaveEffect />
+        <AuroraEffect />
+      </div>
 
       {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
@@ -55,39 +43,74 @@ export const HeroContentEnhanced = () => {
               <span className="text-white text-sm font-semibold">TargetLink</span>
             </motion.div>
 
+            {/* ОРИГИНАЛЬНЫЙ стиль заголовка */}
             <motion.h1
-              className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+              className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight font-sora"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
               Создавайте{" "}
-              <motion.span
-                className="inline-block bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent"
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{ duration: 5, repeat: Infinity }}
-                style={{ backgroundSize: "200% auto" }}
-              >
+              <span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-brand-secondary via-brand-success to-brand-secondary bg-[length:200%_auto] animate-gradient-shift">
                 быстрее
-              </motion.span>{" "}
+              </span>{" "}
               и работайте{" "}
               <motion.span
                 className="relative inline-block"
-                whileHover={{ scale: 1.05, rotate: -2 }}
+                style={{ display: "inline-block" }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                whileHover={{ scale: 1.05, rotate: -1 }}
               >
-                <span className="relative z-10 px-4 py-1 bg-white text-purple-600 rounded-lg font-black">
-                  умнее
-                </span>
-                <motion.div
-                  className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg blur opacity-75"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                    rotate: [0, 5, 0],
+                <motion.span
+                  className="relative inline-block px-6 py-2 bg-gradient-to-r from-brand-purple via-brand-accent to-brand-accent rounded-xl"
+                  style={{
+                    transform: "rotate(-2deg)",
+                    boxShadow: "0 10px 40px rgba(255, 61, 113, 0.4)"
                   }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                />
+                  animate={{
+                    boxShadow: [
+                      "0 10px 40px rgba(255, 61, 113, 0.4)",
+                      "0 10px 50px rgba(123, 97, 255, 0.5)",
+                      "0 10px 40px rgba(255, 61, 113, 0.4)"
+                    ],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <span className="relative z-10 text-white font-bold">
+                    умнее
+                  </span>
+                  <motion.span
+                    className="absolute inset-0 bg-gradient-to-r from-brand-accent/50 via-brand-purple/50 to-brand-primary/50 rounded-xl opacity-0"
+                    animate={{
+                      opacity: [0, 0.3, 0],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </motion.span>
+                <motion.span
+                  className="absolute -top-2 -right-2 text-2xl md:text-3xl"
+                  animate={{
+                    rotate: [0, 15, -15, 0],
+                    y: [0, -3, 0],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  ✨
+                </motion.span>
               </motion.span>
             </motion.h1>
 
@@ -184,7 +207,7 @@ export const HeroContentEnhanced = () => {
                   </div>
 
                   <div className="grid grid-cols-3 gap-2">
-                    {["10:00", "11:00", "14:00", "15:00", "16:00"].slice(0, 5).map((time, i) => (
+                    {["10:00", "11:00", "14:00", "15:00", "16:00"].map((time, i) => (
                       <motion.button
                         key={i}
                         className="px-3 py-2 bg-white/10 rounded-lg text-white text-sm hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 transition-all"
@@ -232,6 +255,12 @@ export const HeroContentEnhanced = () => {
             </motion.div>
           ))}
         </motion.div>
+      </div>
+
+      {/* Foreground Effects - above content */}
+      <div className="absolute inset-0 pointer-events-none z-20">
+        <EnergyEffect />
+        <FloatingElements />
       </div>
     </div>
   );

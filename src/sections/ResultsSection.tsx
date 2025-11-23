@@ -46,7 +46,7 @@ export const ResultsSection = () => {
           >
             📊 Доказанные результаты
           </motion.div>
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 font-sora">
             Цифры{" "}
             <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">
               говорят
@@ -166,12 +166,13 @@ export const ResultsSection = () => {
             viewport={{ once: true }}
           >
             <div className="relative aspect-square rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-1">
-              <div className="w-full h-full bg-black rounded-3xl overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=800&fit=crop"
-                  alt="Dashboard"
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black rounded-3xl flex items-center justify-center overflow-hidden">
+                {/* Placeholder for case study visuals */}
+                <div className="text-center p-12">
+                  <div className="text-8xl mb-6">📊</div>
+                  <div className="text-white text-2xl font-bold mb-2">Analytics Dashboard</div>
+                  <div className="text-white/60">Real-time metrics tracking</div>
+                </div>
               </div>
             </div>
             <motion.div
